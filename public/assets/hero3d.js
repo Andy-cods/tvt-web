@@ -23,7 +23,7 @@
   function env(renderer) {
     var s = new T.Scene(); s.background = new T.Color(0x101116);
     function panel(c, w, h, x, y, z) { var m = new T.Mesh(new T.PlaneGeometry(w, h), new T.MeshBasicMaterial({ color: c, side: T.DoubleSide })); m.position.set(x, y, z); m.lookAt(0, 0, 0); s.add(m); }
-    panel(0xCDBBFF, 6, 10, -8, 3, 2); panel(0x9FE6D4, 5, 8, 8, 1, -3); panel(0xFFD2B6, 10, 3, 0, 9, 0); panel(0xffffff, 4, 4, 2, 3, 9); panel(0x2a2c36, 30, 30, 0, -8, 0);
+    panel(0xFF6A2A, 6, 10, -8, 3, 2); panel(0xBFC4CC, 5, 8, 8, 1, -3); panel(0xFFE3D2, 10, 3, 0, 9, 0); panel(0xffffff, 4, 4, 2, 3, 9); panel(0x2a2c36, 30, 30, 0, -8, 0);
     var pm = new T.PMREMGenerator(renderer), tex = pm.fromScene(s, 0.03).texture; pm.dispose(); return tex;
   }
   function shadowTex() {
@@ -39,12 +39,12 @@
   var cam = new T.PerspectiveCamera(28, 1, 0.1, 100); cam.position.set(0, 2.7, 7.4); cam.lookAt(0, 1.05, 0);
   var key = new T.DirectionalLight(0xffffff, 1.1); key.position.set(3, 5, 4); scene.add(key);
   var clip = new T.Plane(new T.Vector3(0, -1, 0), HEIGHT);
-  var mat = new T.MeshPhysicalMaterial({ color: 0xF1EDF8, metalness: 0.05, roughness: 0.26, clearcoat: 1, clearcoatRoughness: 0.12, iridescence: 1, iridescenceIOR: 1.38, iridescenceThicknessRange: [180, 760], side: T.DoubleSide, clippingPlanes: [clip] });
+  var mat = new T.MeshPhysicalMaterial({ color: 0xF2F0EC, metalness: 0.05, roughness: 0.26, clearcoat: 1, clearcoatRoughness: 0.12, iridescence: 0.35, iridescenceIOR: 1.38, iridescenceThicknessRange: [180, 760], side: T.DoubleSide, clippingPlanes: [clip] });
   var vase = new T.Mesh(vaseGeo(), mat); scene.add(vase);
   var sh = new T.Mesh(new T.PlaneGeometry(3.4, 3.4), new T.MeshBasicMaterial({ map: shadowTex(), transparent: true, depthWrite: false })); sh.rotation.x = -Math.PI / 2; sh.position.y = -0.001; scene.add(sh);
   var RU = 160, ringPos = new Float32Array(RU * 3), rg = new T.BufferGeometry(); rg.setAttribute('position', new T.BufferAttribute(ringPos, 3));
-  var ring = new T.LineLoop(rg, new T.LineBasicMaterial({ color: 0xFFE6D6, transparent: true, opacity: 0.95 })); scene.add(ring);
-  var glow = new T.PointLight(0xFFC9A8, 1.2, 2.2); scene.add(glow);
+  var ring = new T.LineLoop(rg, new T.LineBasicMaterial({ color: 0xFFB089, transparent: true, opacity: 0.95 })); scene.add(ring);
+  var glow = new T.PointLight(0xFF7A45, 1.2, 2.2); scene.add(glow);
   var rL = document.getElementById('rLayer'), rZ = document.getElementById('rZ');
   var progress = reduce ? 1 : 0.5, rot = -0.4, last = 0, visible = true;
   function resize() { var b = cv.getBoundingClientRect(); if (!b.width) return; r.setSize(b.width, b.height, false); cam.aspect = b.width / b.height; cam.updateProjectionMatrix(); }
