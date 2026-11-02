@@ -61,7 +61,7 @@ Khi sửa nội dung, sửa ở cả `data.mjs` và `data.en.mjs`.
 
 ## Triển khai
 
-**GitHub Pages (đang dùng):** mỗi lần push lên `main`, workflow `.github/workflows/pages.yml` tự build và đăng web tại https://andy-cods.github.io/tvt-web/. Lần đầu cần vào Settings → Pages → Source chọn **GitHub Actions**.
+**GitHub Pages (đang dùng):** mỗi lần push lên `main`, workflow `.github/workflows/pages.yml` tự build và đăng web tại https://andy-cods.github.io/tvt-web/. Workflow đẩy thư mục `public/` sang nhánh `gh-pages`; nếu web chưa lên, vào Settings → Pages → Source chọn **Deploy from a branch**, nhánh **gh-pages**, thư mục **/ (root)**.
 
 Hosting khác:
 
